@@ -15,4 +15,12 @@ export class ServicesService {
   post(payload: ServiceModel): Observable<ServiceModel> {
     return this.http.post<ServiceModel>(`${environment.api_url}/api/services`, payload);
   }
+
+  put(payload: ServiceModel): Observable<ServiceModel> {
+    return this.http.put<ServiceModel>(`${environment.api_url}/api/services/${payload._id}`, payload);
+  }
+
+  delete(id: string): Observable<string> {
+    return this.http.delete<string>(`${environment.api_url}/api/services/${id}`);
+  }
 }

@@ -40,18 +40,14 @@ export function employeesReducer(state: EmployeesState = initialEmployeesState, 
       return { ...state, loading: true };
 
     case EmployeesActionTypes.UPDATE_EMPLOYEE_SUCCESS:
-      const oldArray = state.data;
-      const index = oldArray.findIndex((el: any) => el._id === action.payload._id);
-      oldArray.splice(index, 1, action.payload);
-
-      const newArray = oldArray.concat(action.payload);
-
-      const uniqArray = new Set(newArray);
-      const finalArray = Array.from(uniqArray);
-
+      console.log('before all', state.data);
+      console.log('index do item pra editar', state.data.findIndex(p => p._id === action.payload._id));
+      const index = state.data.findIndex(p => p._id === action.payload._id);
+      state.data.splice(index, 1, action.payload);
+      console.log('state.data novo', state.data);
       return {
         ...state,
-        data: [...finalArray],
+        data: [...state.data],
         loading: false
       };
 

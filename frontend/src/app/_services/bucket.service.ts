@@ -41,7 +41,7 @@ export class BucketService {
   }
 
   /**
-   * PSOT a service
+   * POST a service
    *
    * @param payload of ServiceModel type
    * @returns an observable of the added service
@@ -49,26 +49,66 @@ export class BucketService {
   addService(payload: ServiceModel): Observable<ServiceModel> {
     return this._services.post(payload);
   }
+
+  /**
+   * UDPATE a service
+   *
+   * @param payload of ServiceModel type
+   * @returns an observable of the updated service
+   */
+  updateService(payload: ServiceModel): Observable<ServiceModel> {
+    return this._services.put(payload);
+  }
+
+  /**
+   * DELETE a service
+   *
+   * @param payload string
+   * @returns an string of the updated service
+   */
+  deleteService(payload: string): Observable<string> {
+    return this._services.delete(payload);
+  }
   // ************* SERVICES *************
 
   // ************* EMPLOYEES *************
   /**
-   * GET all services
+   * GET all employees
    *
-   * @returns an observable of services
+   * @returns an observable of employees
    */
   getEmployeesList(): Observable<EmployeeModel[]> {
     return this._employees.getAll();
   }
 
   /**
-   * PSOT a service
+   * POST a employee
    *
    * @param payload of EmployeeModel type
-   * @returns an observable of the added service
+   * @returns an observable of the added employee
    */
   addEmployee(payload: EmployeeModel): Observable<EmployeeModel> {
     return this._employees.post(payload);
+  }
+
+  /**
+   * UPDATE a employee
+   *
+   * @param payload of EmployeeModel type
+   * @returns an observable of the updated employee
+   */
+  updateEmployee(payload: EmployeeModel): Observable<EmployeeModel> {
+    return this._employees.put(payload);
+  }
+
+  /**
+   * DELETE a employee
+   *
+   * @param payload of EmployeeModel type
+   * @returns an string of the updated employee
+   */
+  deleteEmployee(payload: string): Observable<string> {
+    return this._employees.delete(payload);
   }
   // ************* EMPLOYEES *************
 }

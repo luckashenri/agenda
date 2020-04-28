@@ -60,9 +60,9 @@
               {{ 'Employees' | translate }}
             </div>
             <div class="ag-button">
-              <button mat-icon-button color="primary" matTooltip="{{'Create a new employee' | translate}}">
-                <mat-icon class="material-icons">add</mat-icon>
-              </button >
+              <button mat-icon-button color="primary" (click)="editEmployees()" matTooltip="{{'Edit employees' | translate}}">
+                <mat-icon class="material-icons">edit</mat-icon>
+              </button>
             </div>
           </div>
           <div class="w-100" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of employeesArray; let i = index">
@@ -79,8 +79,8 @@
           <div class="py-2" fxLayout="row" fxLayoutAlign="space-between center">
             <div>{{ 'Services' | translate }}</div>
             <div class="ag-button">
-              <button mat-icon-button color="primary" matTooltip="{{'Create a new service type' | translate}}">
-                <mat-icon class="material-icons">add</mat-icon>
+              <button mat-icon-button color="primary" (click)="editServices()" matTooltip="{{'Edit services' | translate}}">
+                <mat-icon class="material-icons">edit</mat-icon>
               </button >
             </div>
           </div>

@@ -15,4 +15,12 @@ export class EmployeesService {
   post(payload: EmployeeModel): Observable<EmployeeModel> {
     return this.http.post<EmployeeModel>(`${environment.api_url}/api/employees`, payload);
   }
+
+  put(payload: EmployeeModel): Observable<EmployeeModel> {
+    return this.http.put<EmployeeModel>(`${environment.api_url}/api/employees/${payload._id}`, payload);
+  }
+
+  delete(id: string): Observable<string> {
+    return this.http.delete<string>(`${environment.api_url}/api/employees/${id}`);
+  }
 }

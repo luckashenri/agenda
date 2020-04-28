@@ -10,5 +10,16 @@
   "Employees": "Funcionários",
   "Services": "Serviços",
   "Create a new employee": "Criar um novo funcionário",
-  "Create a new service type": "Criar um novo tipo de serviço"
+  "Create a new service type": "Criar um novo tipo de serviço",
+  "Required field": "Campo obrigatório",
+  "Edit employee": "Editar funcionário",
+  "Edit employees": "Editar funcionários",
+  "Delete employee": "Apagar funcionário",
+  "Name": "Nome",
+  "Phone": "Telefone",
+  "Delete": "Apagar",
+  "Edit": "Editar",
+  "Cancel": "Cancelar",
+  "Save": "Salvar",
+  "Edit services": "Editar serviços"
 }

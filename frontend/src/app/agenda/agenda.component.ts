@@ -10,6 +10,9 @@ import { LoadEmployees } from '../_store/actions/employees.actions';
 import { EmployeeModel } from '../_models/EmployeeModel';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { EmployeesComponent } from './employees/employees.component';
+import { ServicesComponent } from './services/services.component';
 
 @Component({
   selector: 'app-agenda',
@@ -31,7 +34,8 @@ export class AgendaComponent implements OnInit, OnDestroy {
   constructor(
       private store: Store<AppState>,
       private authenticationService: AuthenticationService,
-      private translateService: TranslateService
+      private translateService: TranslateService,
+      public dialog: MatDialog
     ) {
     this.translateService.setDefaultLang('pt-BR');
     this.translateService.addLangs(['en', 'pt-BR']);
@@ -62,6 +66,20 @@ export class AgendaComponent implements OnInit, OnDestroy {
   changeLanguage(evt) {
     this.currentLanguage = evt;
     this.translateService.use(evt);
+  }
+
+  editEmployees() {
+    this.dialog.open(EmployeesComponent, {
+      height: '95%',
+      width: '1200px'
+    });
+  }
+
+  editServices() {
+    this.dialog.open(ServicesComponent, {
+      height: '95%',
+      width: '1200px'
+    });
   }
 
   onChangeSelectedEmployees(event) {

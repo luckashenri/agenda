@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { EmployeeModel } from 'src/app/_models/EmployeeModel';
+import { EmployeeModel } from '../../_models/EmployeeModel';
 
 // LOAD IS FROM API
 export enum EmployeesActionTypes {
@@ -32,7 +32,7 @@ export class LoadEmployeesFailure implements Action {
 // ADD
 export class AddEmployee implements Action {
   readonly type = EmployeesActionTypes.ADD_EMPLOYEE;
-  constructor(public id: number, public payload: EmployeeModel) {}
+  constructor(public payload: EmployeeModel) {}
 }
 export class AddEmployeeSuccess implements Action {
   readonly type = EmployeesActionTypes.ADD_EMPLOYEE_SUCCESS;
@@ -46,7 +46,7 @@ export class AddEmployeeFailure implements Action {
 // UPDATE
 export class UpdateEmployee implements Action {
   readonly type = EmployeesActionTypes.UPDATE_EMPLOYEE;
-  constructor(public id: number, public payload: EmployeeModel) {}
+  constructor(public payload: EmployeeModel) {}
 }
 export class UpdateEmployeeSuccess implements Action {
   readonly type = EmployeesActionTypes.UPDATE_EMPLOYEE_SUCCESS;
@@ -60,11 +60,11 @@ export class UpdateEmployeeFailure implements Action {
 // REMOVE
 export class RemoveEmployee implements Action {
   readonly type = EmployeesActionTypes.REMOVE_EMPLOYEE;
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class RemoveEmployeeSuccess implements Action {
   readonly type = EmployeesActionTypes.REMOVE_EMPLOYEE_SUCCESS;
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class RemoveEmployeeFailure implements Action {
   readonly type = EmployeesActionTypes.REMOVE_EMPLOYEE_FAILURE;

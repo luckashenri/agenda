@@ -9,8 +9,15 @@ import { LoadEmployees,
   LoadEmployeesFailure,
   AddEmployee,
   AddEmployeeSuccess,
-  AddEmployeeFailure
+  AddEmployeeFailure,
+  UpdateEmployee,
+  UpdateEmployeeSuccess,
+  UpdateEmployeeFailure,
+  RemoveEmployee,
+  RemoveEmployeeSuccess,
+  RemoveEmployeeFailure
 } from '../actions/employees.actions';
+import { EmployeeModel } from 'src/app/_models/EmployeeModel';
 
 @Injectable()
 export class EmployeesEffects {
@@ -46,15 +53,15 @@ export class EmployeesEffects {
   // );
 
   // UPDATE
-  // @Effect() updateEmployees$ = this.actions.pipe(
-  //   ofType<UpdateEmployee>(EmployeesActionTypes.UPDATE_EMPLOYEE),
-  //   mergeMap(data =>
-  //     this.bucketEmployee.updateEmployee(data.id, data.payload).pipe(
-  //       map(res => new UpdateEmployeeSuccess(res)),
-  //       catchError(error => of(new UpdateEmployeeFailure(error)))
-  //     )
-  //   )
-  // );
+  @Effect() updateEmployees$ = this.actions.pipe(
+    ofType<UpdateEmployee>(EmployeesActionTypes.UPDATE_EMPLOYEE),
+    mergeMap(data =>
+      this.bucketEmployee.updateEmployee(data.payload).pipe(
+        map((res: EmployeeModel) => new UpdateEmployeeSuccess(res)),
+        catchError(error => of(new UpdateEmployeeFailure(error)))
+      )
+    )
+  );
 
   // UPDATE SUCCESS
   // @Effect({ dispatch: false }) updateEmployeeSuccess$ = this.actions.pipe(
@@ -65,15 +72,15 @@ export class EmployeesEffects {
   // );
 
   // REMOVE
-  // @Effect() removeEmployees$ = this.actions.pipe(
-  //   ofType<RemoveEmployee>(EmployeesActionTypes.REMOVE_EMPLOYEE),
-  //   mergeMap(data =>
-  //     this.bucketEmployee.deleteEmployee(data.payload).pipe(
-  //       map(() => new RemoveEmployeeSuccess(data.payload)),
-  //       catchError(error => of(new RemoveEmployeeFailure(error)))
-  //     )
-  //   )
-  // );
+  @Effect() removeEmployees$ = this.actions.pipe(
+    ofType<RemoveEmployee>(EmployeesActionTypes.REMOVE_EMPLOYEE),
+    mergeMap(data =>
+      this.bucketEmployee.deleteEmployee(data.payload).pipe(
+        map(() => new RemoveEmployeeSuccess(data.payload)),
+        catchError(error => of(new RemoveEmployeeFailure(error)))
+      )
+    )
+  );
 
   constructor(private actions: Actions, private bucketEmployee: BucketService) {}
 }

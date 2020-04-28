@@ -32,7 +32,7 @@ export class LoadServicesFailure implements Action {
 // ADD
 export class AddService implements Action {
   readonly type = ServicesActionTypes.ADD_SERVICE;
-  constructor(public id: number, public payload: ServiceModel) {}
+  constructor(public payload: ServiceModel) {}
 }
 export class AddServiceSuccess implements Action {
   readonly type = ServicesActionTypes.ADD_SERVICE_SUCCESS;
@@ -46,7 +46,7 @@ export class AddServiceFailure implements Action {
 // UPDATE
 export class UpdateService implements Action {
   readonly type = ServicesActionTypes.UPDATE_SERVICE;
-  constructor(public id: number, public payload: ServiceModel) {}
+  constructor(public payload: ServiceModel) {}
 }
 export class UpdateServiceSuccess implements Action {
   readonly type = ServicesActionTypes.UPDATE_SERVICE_SUCCESS;
@@ -60,11 +60,11 @@ export class UpdateServiceFailure implements Action {
 // REMOVE
 export class RemoveService implements Action {
   readonly type = ServicesActionTypes.REMOVE_SERVICE;
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class RemoveServiceSuccess implements Action {
   readonly type = ServicesActionTypes.REMOVE_SERVICE_SUCCESS;
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class RemoveServiceFailure implements Action {
   readonly type = ServicesActionTypes.REMOVE_SERVICE_FAILURE;

@@ -1,0 +1,9 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <img src="../../../../../assets/images/box.png" alt="Sem dados" />
+  <span class="pt-2" *ngIf="!a">Sem dados</span>
+
+  <div class="pt-2" fxLayout="column" fxLayoutAlign="center center">
+    <span *ngIf="a">{{ a }}</span>
+    <small *ngIf="b">{{ b }}</small>
+  </div>
+</div>
