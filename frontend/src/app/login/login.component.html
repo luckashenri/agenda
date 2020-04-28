@@ -1,0 +1,31 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div class="pb-3 w-100">
+          <span class="font-medium required-field">{{'Email' | translate}}</span>
+          <input class="form-control no-margin w-100" formControlName="email" type="text" />
+        </div>
+        <div class="pb-3 w-100">
+          <span class="font-medium required-field">{{'Password' | translate}}</span>
+          <input class="form-control no-margin w-100" formControlName="password" type="password" />
+        </div>
+      </mat-card-content>
+      <div class="dnt-button">
+        <button mat-raised-button color="primary" class="btn-block">{{'Login' | translate}}</button>
+      </div>
+    </form>
+  </mat-card>
+</div>
+<mat-button-toggle-group
+  class="langToggle"
+  #langToggle="matButtonToggleGroup"
+  (change)="translateService.use(langToggle.value)"
+>
+  <mat-button-toggle value="en">
+    <img style="width: 24px; height: 16px" src="assets/flag-icons/usa-flag.png" alt="{{'EUA flag' | translate}}" />
+  </mat-button-toggle>
+  <mat-button-toggle value="pt-BR">
+    <img style="width: 24px; height: 16px" src="assets/flag-icons/brasil-flag.png" alt="{{'Brazil flag' | translate}}" />
+  </mat-button-toggle>
+</mat-button-toggle-group>

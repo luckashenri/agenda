@@ -1,0 +1,105 @@
+<mat-toolbar class="dnt-dark-background">
+  <div class="logo-container" routerLink="/" fxLayout="row" fxLayoutAlign="center center">
+    <img src="assets/icons/correct.svg" alt="correct">
+    <span>Checked.io</span>
+  </div>
+  <button mat-button class="darker h-100 mx-1" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="example-spacer"></span>
+
+  <mat-menu #appMenu="matMenu">
+    <button mat-menu-item (click)="changeLanguage('pt-BR')">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon fxLayout="row" fxLayoutAlign="center center"
+          ><img style="width: 28px" src="assets/flag-icons/brasil-flag.png" alt="Bandeira do brasil"/></mat-icon
+        ><span>PT-BR</span>
+      </div>
+    </button>
+    <button mat-menu-item (click)="changeLanguage('en')">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon fxLayout="row" fxLayoutAlign="center center"
+          ><img style="width: 28px" src="assets/flag-icons/usa-flag.png" alt="Bandeira dos Estados Unidos"/></mat-icon
+        ><span>EN</span>
+      </div>
+    </button>
+  </mat-menu>
+  <button mat-icon-button [matMenuTriggerFor]="appMenu">
+    <div class="darker to-uppercase" *ngIf="currentLanguage === 'pt-BR'">PT</div>
+    <div class="darker to-uppercase" *ngIf="currentLanguage !== 'pt-BR'">EN</div>
+  </button>
+
+  <button [matMenuTriggerFor]="menu" mat-icon-button>
+    <mat-icon class="darker">person</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button (click)="logout()" mat-menu-item class="to-uppercase">Sair</button>
+  </mat-menu>
+</mat-toolbar>
+
+<mat-sidenav-container class="example-container" style="padding-top: 64px">
+  <mat-sidenav
+    #sidenav
+    class="example-sidenav"
+    style="padding-top: 64px"
+    fixedInViewport
+    fixedTopGap
+    mode="side"
+    opened
+  >
+    <div class="menu-itens p-3" fxLayout="column" fxLayoutAlign="start center">
+      <div class="ag-button w-100 my-2" fxLayout="row" fxLayoutAlign="center center">
+        <button mat-raised-button color="primary" class="create-schedule w-100">{{'Create schedule' | translate}}</button>
+      </div>
+
+      <div class="filters w-100">
+
+        <div class="group" fxLayout="column">
+          <div class="py-2" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              {{ 'Employees' | translate }}
+            </div>
+            <div class="ag-button">
+              <button mat-icon-button color="primary" matTooltip="{{'Create a new employee' | translate}}">
+                <mat-icon class="material-icons">add</mat-icon>
+              </button >
+            </div>
+          </div>
+          <div class="w-100" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of employeesArray; let i = index">
+            <mat-checkbox class="py-1"
+              (change)="onChangeSelectedEmployees($event, i)"
+              [value]="item"
+              [disabled]="onlyShowDetails"
+              [checked]="auxSelectedEmployees.value.includes(item)"><div class="group-name">{{ item.name | translate }}</div>
+            </mat-checkbox>        
+          </div>
+        </div>
+        
+        <div class="group" fxLayout="column">
+          <div class="py-2" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>{{ 'Services' | translate }}</div>
+            <div class="ag-button">
+              <button mat-icon-button color="primary" matTooltip="{{'Create a new service type' | translate}}">
+                <mat-icon class="material-icons">add</mat-icon>
+              </button >
+            </div>
+          </div>
+          <div class="w-100" fxLayout="column" fxLayoutAlign="start start" *ngFor="let item of servicesArray; let i = index">
+            <mat-checkbox class="py-1"
+              (change)="onChangeSelectedServices($event, i)"
+              [value]="item"
+              [disabled]="onlyShowDetails"
+              [checked]="auxSelectedServices.value.includes(item)"><div class="group-name">{{ item.name | translate }}</div>
+            </mat-checkbox>        
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
