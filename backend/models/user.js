@@ -23,14 +23,12 @@ const userSchema = mongoose.Schema({
     min: 5,
     max: 1024
   },
-  isAdmin: Boolean,
-  // roles: ['admin', 'client', 'partner']
-  // operations: ['delete renges', 'post customers']
-  // AFTER DEFINE ROLES/OPERATIONS, I NEED TO CREATE A NEW MIDDLEWARE AND MAKE THE VALIDATION
+  isAdmin: Boolean
 })
 
 userSchema.methods.generateAuthToken = function() {
-  return jwt.sign({ _id: this._id, isAdmin: this.isAdmin, name: this.name }, config.get('jwtPrivateKey')); 
+  // return jwt.sign({ _id: this._id, isAdmin: this.isAdmin, name: this.name }, config.get('jwtPrivateKey'));
+  return jwt.sign({ _id: this._id, isAdmin: this.isAdmin, name: this.name }, 'ForDevPurposesOnly');
 };
 
 const User = mongoose.model('User', userSchema);

@@ -11,13 +11,14 @@ const users = require('./routes/users');
 const auth = require('./routes/auth');
 const app = express();
 
-app.use(cors())
+app.use(cors());
 
-if (!config.get('jwtPrivateKey')) {
-  console.error('FATAL ERROR: JWT is not defined!');
-  process.exit(1);
-}
-// export agenda_jwtPrivateKey="myPrivateKey"
+// if (!config.get('jwtPrivateKey')) {
+//   console.error('FATAL ERROR: JWT is not defined!');
+//   process.exit(1);
+// }
+
+// export agenda_jwtPrivateKey="privateKey"
 
 mongoose.connect('mongodb://localhost/github-agenda', { useUnifiedTopology: true, useNewUrlParser: true }).then(() => 'Connected to the database').catch((err) => console.log('err', err));
 
